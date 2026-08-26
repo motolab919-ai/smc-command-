@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SMC Command Center</title>
+    <title>SMC Command</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             margin: 0;
             background: #080b12;
@@ -19,118 +14,96 @@
         }
 
         header {
-            background: #0e141f;
-            border-bottom: 1px solid #252d3a;
-            padding: 18px 24px;
+            padding: 18px 25px;
+            background: #101722;
+            border-bottom: 1px solid #293241;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
 
         h1 {
             margin: 0;
-            color: #4de1ff;
-            font-size: 24px;
+            color: #42d9ff;
         }
 
-        .status {
-            color: #20e090;
+        .live {
+            color: #20df8a;
             font-weight: bold;
         }
 
         .container {
-            padding: 16px;
-            max-width: 1600px;
+            max-width: 1500px;
             margin: auto;
+            padding: 15px;
         }
 
-        .chart-box {
-            background: #0e141f;
-            border: 1px solid #252d3a;
+        .chart {
+            height: 650px;
+            background: #101722;
             border-radius: 12px;
             overflow: hidden;
         }
 
-        .chart-title {
-            padding: 16px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        #tradingview_chart {
-            width: 100%;
-            height: 650px;
-        }
-
-        .dashboard {
+        .grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-top: 16px;
+            gap: 15px;
+            margin-top: 15px;
         }
 
         .card {
-            background: #0e141f;
-            border: 1px solid #252d3a;
+            background: #101722;
+            border: 1px solid #293241;
             border-radius: 12px;
             padding: 20px;
         }
 
         .label {
-            color: #8995a8;
+            color: #8793a5;
             font-size: 13px;
             text-transform: uppercase;
         }
 
         .value {
-            margin-top: 9px;
-            font-size: 24px;
+            margin-top: 10px;
+            font-size: 22px;
             font-weight: bold;
         }
 
+        .cyan {
+            color: #42d9ff;
+        }
+
         .green {
-            color: #20e090;
+            color: #20df8a;
         }
 
         .yellow {
-            color: #f6c85f;
-        }
-
-        .blue {
-            color: #4de1ff;
+            color: #ffd166;
         }
 
         .gray {
-            color: #aab4c3;
+            color: #9aa6b8;
         }
 
         .info {
-            margin-top: 16px;
-            background: #0e141f;
-            border: 1px solid #252d3a;
-            border-radius: 12px;
+            margin-top: 15px;
             padding: 18px;
-            color: #aab4c3;
-            line-height: 1.6;
+            background: #101722;
+            border: 1px solid #293241;
+            border-radius: 12px;
+            color: #9aa6b8;
         }
 
-        @media (max-width: 900px) {
-            .dashboard {
+        @media(max-width: 900px) {
+            .grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 600px) {
-            .dashboard {
+        @media(max-width: 600px) {
+            .grid {
                 grid-template-columns: 1fr;
-            }
-
-            header {
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 19px;
             }
         }
     </style>
@@ -139,149 +112,122 @@
 <body>
 
 <header>
-    <h1>SMC COMMAND CENTER</h1>
-    <div class="status">● LIVE CHART</div>
+    <h1>SMC COMMAND</h1>
+    <div class="live">● LIVE CHART</div>
 </header>
 
 <div class="container">
 
-    <div class="chart-box">
+    <div class="chart" id="tradingview"></div>
 
-        <div class="chart-title">
-            XAUUSD — 15 MINUTES
-        </div>
-
-        <div id="tradingview_chart"></div>
-
-    </div>
-
-
-    <div class="dashboard">
+    <div class="grid">
 
         <div class="card">
             <div class="label">Market Structure</div>
-            <div class="value yellow" id="structure">
-                ANALYZING
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="label">Analysis Status</div>
-            <div class="value blue" id="signal">
-                WAITING
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="label">Order Block</div>
-            <div class="value gray" id="orderBlock">
-                SCANNING
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="label">Fair Value Gap</div>
-            <div class="value gray" id="fvg">
-                SCANNING
-            </div>
-        </div>
-
-    </div>
-
-
-    <div class="dashboard">
-
-        <div class="card">
-            <div class="label">Current Price</div>
-            <div class="value blue" id="price">
-                --.--
-            </div>
+            <div class="value yellow">WAITING</div>
         </div>
 
         <div class="card">
             <div class="label">Analysis</div>
-            <div class="value gray">
-                LIVE
+            <div class="value cyan">WAITING</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Order Block</div>
+            <div class="value gray">WAITING</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Fair Value Gap</div>
+            <div class="value gray">WAITING</div>
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="label">Market Data</div>
+            <div class="value green" id="dataStatus">
+                NOT CONNECTED
             </div>
         </div>
 
         <div class="card">
-            <div class="label">Data Status</div>
-            <div class="value green">
-                CONNECTED
+            <div class="label">Engine</div>
+            <div class="value cyan">
+                READY
             </div>
         </div>
 
         <div class="card">
             <div class="label">Last Update</div>
-            <div class="value gray" id="update">
-                --:--:--
+            <div class="value gray" id="clock">
+                --
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="label">Symbol</div>
+            <div class="value cyan">
+                XAUUSD
             </div>
         </div>
 
     </div>
 
-
     <div class="info">
-        <strong>SMC Analysis Engine</strong><br>
-        The chart above is provided by TradingView.
-        The analysis panel is being prepared for a separate live
-        market-data connection. Until that connection is added,
-        no BUY/SELL, entry, stop-loss or take-profit values are
-        displayed as if they were live.
+        <strong>SMC Command</strong><br><br>
+        Live chart: connected through TradingView.<br>
+        Analysis engine: waiting for a separate market-data feed.
     </div>
 
 </div>
-
 
 <script src="https://s3.tradingview.com/tv.js"></script>
 
 <script>
 
-    new TradingView.widget({
+new TradingView.widget({
 
-        width: "100%",
-        height: 650,
+    width: "100%",
+    height: 650,
 
-        symbol: "OANDA:XAUUSD",
+    symbol: "OANDA:XAUUSD",
 
-        interval: "15",
+    interval: "15",
 
-        timezone: "Asia/Kolkata",
+    timezone: "Asia/Kolkata",
 
-        theme: "dark",
+    theme: "dark",
 
-        style: "1",
+    style: "1",
 
-        locale: "en",
+    locale: "en",
 
-        toolbar_bg: "#0e141f",
+    enable_publishing: false,
 
-        enable_publishing: false,
+    hide_top_toolbar: false,
 
-        hide_top_toolbar: false,
+    hide_legend: false,
 
-        hide_legend: false,
+    save_image: false,
 
-        save_image: false,
+    container_id: "tradingview"
 
-        container_id: "tradingview_chart"
-
-    });
+});
 
 
-    function updateClock() {
+function updateClock() {
 
-        const now = new Date();
+    document.getElementById("clock").textContent =
+        new Date().toLocaleTimeString();
 
-        document.getElementById("update").textContent =
-            now.toLocaleTimeString();
+}
 
-    }
+updateClock();
 
-    updateClock();
-
-    setInterval(updateClock, 1000);
+setInterval(updateClock, 1000);
 
 </script>
 
