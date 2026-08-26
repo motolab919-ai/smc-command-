@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SMC Command Center</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #080b12;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            padding: 20px;
+            background: #0e141f;
+            border-bottom: 1px solid #252d3a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: #4de1ff;
+        }
+
+        .online {
+            color: #20e090;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        .chart-box {
+            background: #0e141f;
+            border: 1px solid #252d3a;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .chart-title {
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #tradingview_chart {
+            height: 650px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .box {
+            background: #0e141f;
+            border: 1px solid #252d3a;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .label {
+            color: #8995a8;
+            font-size: 13px;
+        }
+
+        .value {
+            margin-top: 8px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .green {
+            color: #20e090;
+        }
+
+        .red {
+            color: #ff4f70;
+        }
+
+        @media(max-width:900px) {
+            .dashboard {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:600px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>SMC COMMAND CENTER</h1>
+    <div class="online">● ENGINE ONLINE</div>
+</header>
+
+<div class="container">
+
+    <div class="chart-box">
+
+        <div class="chart-title">
+            XAUUSD — LIVE CHART
+        </div>
+
+        <div id="tradingview_chart"></div>
+
+    </div>
+
+
+    <div class="dashboard">
+
+        <div class="box">
+            <div class="label">MARKET BIAS</div>
+            <div class="value green">
+                BULLISH
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="label">SIGNAL</div>
+            <div class="value green">
+                BUY
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="label">ORDER BLOCK</div>
+            <div class="value">
+                BULLISH
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="label">FVG</div>
+            <div class="value">
+                DETECTED
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="dashboard">
+
+        <div class="box">
+            <div class="label">ENTRY</div>
+            <div class="value">
+                2418.72
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="label">STOP LOSS</div>
+            <div class="value red">
+                2412.40
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="label">TAKE PROFIT</div>
+            <div class="value green">
+                2431.36
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="label">RISK / REWARD</div>
+            <div class="value">
+                1 : 2
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TradingView Chart -->
+<script
+    type="text/javascript"
+    src="https://s3.tradingview.com/tv.js">
+</script>
+
+<script>
+
+new TradingView.widget({
+
+    "width": "100%",
+    "height": 650,
+
+    "symbol": "OANDA:XAUUSD",
+
+    "interval": "15",
+
+    "timezone": "Asia/Kolkata",
+
+    "theme": "dark",
+
+    "style": "1",
+
+    "locale": "en",
+
+    "toolbar_bg": "#0e141f",
+
+    "enable_publishing": false,
+
+    "hide_top_toolbar": false,
+
+    "hide_legend": false,
+
+    "save_image": false,
+
+    "container_id": "tradingview_chart"
+
+});
+
+</script>
+
+</body>
+</html>ssss
